@@ -17,6 +17,7 @@ services:
       - db
     command: sh -c "/etc/init.d/dbus start && /etc/init.d/avahi-daemon start && /etc/init.d/cups start && apache2ctl -D FOREGROUND "
   phpmyadmin:
+    container_name: sutm-phpmyadmin-prod
     image: phpmyadmin/phpmyadmin
     env_file:
       - ../.env
@@ -25,7 +26,7 @@ services:
     depends_on:
       - db
   db:
-    container_name: sutm-db-dev
+    container_name: sutm-db-prod
     image: mysql:latest
     env_file:
       - ../.env
