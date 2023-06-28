@@ -2,7 +2,6 @@ version: '3'
 services:
   app:
     container_name: sutm-app-prod
-      #network_mode: host
     build:
       context: ../
       dockerfile: docker/Dockerfile
