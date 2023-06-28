@@ -1,5 +1,22 @@
 <?php
 $servername = "db";
+
+// Ruta y nombre del archivo de variables de entorno
+$envFile = '.env';
+
+// Lee el contenido del archivo de variables de entorno
+$envContent = file_get_contents($envFile);
+
+// Analiza el contenido del archivo y establece las variables de entorno
+foreach (explode("\n", $envContent) as $line) {
+    $line = trim($line);
+    if ($line && strpos($line, '=') !== false) {
+        list($key, $value) = explode('=', $line, 2);
+        $_ENV[$key] = $value;
+        putenv("$key=$value");
+    }
+}
+
 $username = $_ENV['DB_USERNAME'];
 $password = $_ENV['DB_PASSWORD'];
 $database = $_ENV['DB_DATABASE'];
