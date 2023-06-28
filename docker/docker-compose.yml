@@ -11,6 +11,7 @@ services:
       - ../.env:/var/www/html/.env
     depends_on:
       - db
+    command: php -S 0.0.0.0:80 -t /var/www/html
   db:
     image: mysql:latest
     env_file:
