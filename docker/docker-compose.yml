@@ -12,7 +12,7 @@ services:
       - ../.env:/var/www/html/.env
     depends_on:
       - db
-        #command: php -S 0.0.0.0:80 -t /var/www/html
+    command: php -S 0.0.0.0:80 -t /var/www/html
   db:
     container_name: sutm-db-dev
     image: mysql:latest
