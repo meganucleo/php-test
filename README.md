@@ -21,7 +21,7 @@ Debe de colocarse en el directorio php-test
 *PMA_* Son variables que usa phpmyadmin para conectarse a mysql
 
 
-'''
+''
 DB_USERNAME=root
 DB_PASSWORD=mysecretpassword
 DB_DATABASE=mydatabase
@@ -30,4 +30,4 @@ MYSQL_DATABASE=mydatabase
 PMA_HOST=db
 PMA_USER=root
 PMA_PASSWORD=mysecretpassword
-'''
+''
