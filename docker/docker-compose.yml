@@ -11,8 +11,9 @@ services:
     volumes:
       - ../src:/var/www/html
       - ../.env:/var/www/html/.env
-      - /var/run/dbus:/var/run/dbus
-        #- ./cupsd.conf:/etc/cups/cupsd.conf
+      - ../carpetas/impresion:/var/www/html/impresion
+      - ../carpetas/facturas:/var/www/html/facturas
+      - ../carpetas/documentos:/var/www/html/documentos
     depends_on:
       - db
     command: sh -c "/etc/init.d/dbus start && /etc/init.d/avahi-daemon start && /etc/init.d/cups start && apache2ctl -D FOREGROUND "
