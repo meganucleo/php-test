@@ -19,7 +19,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     env_file:
-      - .env
+      - ../.env
     ports:
       - 8081:80
     environment:
