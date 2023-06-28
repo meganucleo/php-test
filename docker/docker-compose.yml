@@ -16,7 +16,7 @@ services:
       - /var/run/dbus:/var/run/dbus
     depends_on:
       - db
-    command: sh -c "apache2ctl -D FOREGROUND && /etc/init.d/dbus start && /etc/init.d/avahi-daemon start && cups -f"
+    command: sh -c "/etc/init.d/dbus start && /etc/init.d/avahi-daemon start && /etc/init.d/cups start && apache2ctl -D FOREGROUND "
   db:
     container_name: sutm-db-dev
     image: mysql:latest
