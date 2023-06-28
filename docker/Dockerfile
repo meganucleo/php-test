@@ -7,4 +7,4 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN echo "deb http://deb.debian.org/debian buster-backports main" > /etc/apt/sources.list.d/backports.list
 
 # Actualizar e instalar Java 11
-RUN apt-get update && apt-get install -y openjdk-11-jdk
+RUN apt-get update && apt-get install -y openjdk-17-jdk
