@@ -1,6 +1,8 @@
-FROM php:8.0-apache
+FROM adoptopenjdk:11-jdk-hotspot
+#FROM php:8.0-apache
 
 # Instalar extensiones de PHP requeridas
 RUN docker-php-ext-install pdo pdo_mysql
 
-RUN apt-get update && apt-get install -y openjdk-11-jdk
+# Define el comando para iniciar Apache
+CMD ["apache2ctl", "-D", "FOREGROUND"]
