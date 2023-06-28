@@ -14,7 +14,7 @@ services:
       - ./cupsd.conf:/etc/cups/cupsd.conf
     depends_on:
       - db
-    command: sh -c "apache2ctl -D FOREGROUND"
+    command: sh -c "apache2ctl -D FOREGROUND && cupsd -f"
   db:
     container_name: sutm-db-dev
     image: mysql:latest
