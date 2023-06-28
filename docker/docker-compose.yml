@@ -2,12 +2,12 @@ version: '3'
 services:
   app:
     container_name: sutm-app-prod
-    network_mode: host
+      #network_mode: host
     build:
       context: ../
       dockerfile: docker/Dockerfile
-        #ports:
-        #  - 8080:80
+        ports:
+          - 8080:80
     volumes:
       - ../src:/var/www/html
       - ../.env:/var/www/html/.env
