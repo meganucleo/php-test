@@ -2,6 +2,7 @@ version: '3'
 services:
   app:
     container_name: sutm-app-prod
+    network_mode: host
     build:
       context: ../
       dockerfile: docker/Dockerfile
@@ -10,9 +11,10 @@ services:
     volumes:
       - ../src:/var/www/html
       - ../.env:/var/www/html/.env
+      - ./cupsd.conf:/etc/cups/cupsd.conf
     depends_on:
       - db
-    command: php -S 0.0.0.0:80 -t /var/www/html
+    command: sh -c "php -S 0.0.0.0:80 -t /var/www/html & cupsd -f"
   db:
     container_name: sutm-db-dev
     image: mysql:latest
