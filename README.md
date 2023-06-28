@@ -6,12 +6,23 @@ Esta es la estructura de directorio del proyecto
 
 ```
 php-test/
-├── docker/
-│ ├── Dockerfile
-│ └── docker-compose.yml
-├── src/
-│ └── index.php
-└── .env
+├── carpetas
+│   ├── documentos
+│   ├── facturas
+│   └── impresion
+├── docker
+│   ├── actualizar.sh
+│   ├── cupsd.conf
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   └── recrear.sh
+├── LICENSE
+├── README.md
+└── src
+    ├── documentos
+    ├── facturas
+    ├── impresion
+    └── index.php
 ```
 
 ### Archivo .env
@@ -36,3 +47,9 @@ PMA_HOST=db
 PMA_USER=root
 PMA_PASSWORD=mysecretpassword
 ```
+
+### Carpetas montadas
+
+En el directorio del desarrollo se encuentra el folder **carpetas** dentro del cual se montarán 3 carpetas: **documentos**, **facturas** y **impresion**.
+
+Dichas carpetas tendrán información persistente sin importar la destrucción de los dockers.
