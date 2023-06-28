@@ -11,6 +11,7 @@ services:
       - ../.env:/var/www/html/.env
     depends_on:
       - db
+    command: apache2-foreground
   db:
     image: mysql:latest
     env_file:
