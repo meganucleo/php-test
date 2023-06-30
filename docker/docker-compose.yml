@@ -15,7 +15,7 @@ services:
       - ../carpetas/documentos:/var/www/html/documentos
     depends_on:
       - db
-    command: sh -c "/etc/init.d/dbus start && /etc/init.d/avahi-daemon start && /etc/init.d/cups start && apache2ctl -D FOREGROUND "
+    command: sh -c "apache2ctl -D FOREGROUND "
   phpmyadmin:
     container_name: sutm-phpmyadmin-prod
     image: phpmyadmin/phpmyadmin
