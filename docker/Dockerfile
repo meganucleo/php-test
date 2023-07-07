@@ -8,5 +8,5 @@ RUN apt-get update && apt-get install -y openjdk-17-jdk && apt-get clean && rm -
 #RUN systemctl enable avahi-daemon.service
 
 # Instalar extensiones de PHP requeridas
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql mysqli && docker-php-ext-enable mysqli
 
