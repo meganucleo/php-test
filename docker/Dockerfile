@@ -8,5 +8,13 @@ RUN apt-get update && apt-get install -y openjdk-17-jdk && apt-get clean && rm -
 #RUN systemctl enable avahi-daemon.service
 
 # Instalar extensiones de PHP requeridas
-RUN docker-php-ext-install mysqli mssql && docker-php-ext-enable mysqli mssql
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli 
+
+#Instalar FreeTDS
+RUN apt-get install -y --no-install-recommends \
+freetds-dev freetds-bin freetds-common libdbd-freetds libsysbdb5 libqt4-sql-tds libqt5sql5-tds ;\
+ln -s /usr/lib/x86_64-linux-gnu/libsybdb.so /usr/lib/libsybdb.so ;\
+ln -s /usr/lib/x86_64-linux-gnu/libsybdb.a /usr/lib/libsybdb.a ;\
+docker-php-ext-install mssql ;\
+docker-php-ext-configure mssql
 
