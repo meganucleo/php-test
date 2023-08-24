@@ -10,11 +10,12 @@ RUN apt-get update && apt-get install -y openjdk-17-jdk && apt-get clean && rm -
 # Instalar extensiones de PHP requeridas
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli 
 
-#Instalar FreeTDS
-RUN apt-get install -y --no-install-recommends \
-freetds-dev freetds-bin freetds-common libdbd-freetds libsysbdb5 libqt4-sql-tds libqt5sql5-tds ;\
-ln -s /usr/lib/x86_64-linux-gnu/libsybdb.so /usr/lib/libsybdb.so ;\
-ln -s /usr/lib/x86_64-linux-gnu/libsybdb.a /usr/lib/libsybdb.a ;\
-docker-php-ext-install mssql ;\
-docker-php-ext-configure mssql
-
+#Instalar dependencias para freetds
+RUN apt-get update && \
+    apt-get install -y freetds-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+RUN docker-php-ext-install pdo_dblib
+RUN docker-php-ext-enable pdo_dblib
+# Reiniciar Apache
+RUN service apache2 restart
