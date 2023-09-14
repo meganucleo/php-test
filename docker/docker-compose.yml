@@ -5,6 +5,8 @@ services:
     build:
       context: ../
       dockerfile: docker/Dockerfile
+    networks:
+      - my_network # Conéctalo a la red personalizada
     ports:
       - 8080:80
     volumes:
@@ -23,6 +25,8 @@ services:
       - ../.env
     ports:
       - 8081:80
+    networks:
+      - my_network # Conéctalo a la red personalizada
     depends_on:
       - db
   db:
@@ -32,5 +36,10 @@ services:
       - ../.env
     ports:
       - 3306:3306
+    networks:
+      - my_network # Conéctalo a la red personalizada
     volumes:
       - ../../mysql-data:/var/lib/mysql
+
+networks:
+  my_network:
